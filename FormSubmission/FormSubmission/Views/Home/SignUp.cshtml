@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<h2>SignUp</h2>
+<form method="post">
+    <input type="text" name="Name" class="form-control" placeholder="Name" />
+    <input type="text" name="Username" class="form-control" placeholder="Username" />
+    Gender: <input type="radio" name="Gender" value="Male" /> Male
+    <input type="radio" name="Gender" value="Female" /> Female </br>
+    Profession:
+    <select class="form-control" name="Profession">
+        <option disabled selected>---Select---</option>
+        <option>Teacher</option>
+        <option>Student</option>
+        <option>Business</option>
+    </select>
+
+    Hobbies: 
+    <input type="checkbox" name="Hobbies[]"  value="Music" />Music
+    <input type="checkbox" name="Hobbies[]" value="Sports" />Sports
+    <input type="checkbox" name="Hobbies[]" value="Travelling" />Travelling
+    <input type="checkbox" name="Hobbies[]" value="Gaming" />Gaming <br />
+    <input type="submit" class="btn btn-success" />
+</form>
+
