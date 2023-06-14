@@ -28,11 +28,12 @@ namespace FormSubmission.Controllers
         }
         [HttpPost]
         public ActionResult SignUp(User u) {
-            //var test = u;
+
+            var test = u.Dob.Date.ToString("yyyy-MM-dd");
             if (ModelState.IsValid) { 
                 return RedirectToAction("Login");
             }
-            return View();
+            return View(u);
         }
     }
 }

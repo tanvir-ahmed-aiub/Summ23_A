@@ -8,7 +8,7 @@ namespace FormSubmission.Models
 {
     public class User
     {
-        [Required]
+        [Required(ErrorMessage ="Please provide your name")]
         public string Name { get; set; }
         [Required]
         public string Username { get; set; }
@@ -16,7 +16,9 @@ namespace FormSubmission.Models
         public string Gender { get; set; }
         [Required]
         public string Profession { get; set; }
-
+        [Required]
         public string[] Hobbies { get; set; }
+        [Required]
+        public DateTime Dob { get; set; }
     }
 }
