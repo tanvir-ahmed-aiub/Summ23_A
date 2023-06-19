@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FormSubmission.Models
 {
-    public class User
+    public class UserDTO
     {
         [Required(ErrorMessage ="Please provide your name")]
         public string Name { get; set; }
