@@ -1,0 +1,30 @@
+﻿@model List<ProductManagement.Models.ProductDTO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+<h2>Index</h2>
+<a href="/Product/Create" class="btn btn-success">Create</a>
+
+<table class="table table-condensed">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Descprition</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Qty</td>
+            <td>@item.Description</td>
+            <th><a href="/Product/Edit/@item.Id" class="btn btn-warning">Edit</a></th>
+            <th><a href="/Product/Delete/@item.Id" class="btn btn-danger">Delete</a></th>
+        </tr>
+    }
+</table>

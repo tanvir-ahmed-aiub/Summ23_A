@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+        <a href="/" class="btn btn-success">Home</a>
+        <a href="/Home/SignUp" class="btn btn-success">Sign Up</a>
+        <a href="/Product/Index" class="btn btn-success">Products</a>
+        <a href="" class="btn btn-success">Cart</a>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        <h3>Adv. .Net [A]</h3>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
