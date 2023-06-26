@@ -1,0 +1,32 @@
+﻿@model List<ProductManagement.Models.OrderDTO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+<h2>Orders</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) { 
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Status</td>
+                <td>@item.Date</td>
+                <td>@item.Amount</td>
+                <td><a href="/Order/Details/@item.Id" class="btn btn-primary">Details</a></td>
+                <td><a href="/Order/Decline/@item.Id" class="btn btn-danger">Decline</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+﻿@model ProductManagement.DB.Order
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+<h2>Details</h2>
+<h3>Order Id : @Model.Id</h3>
+<h3>Order Date : @Model.Date</h3>
+<h3>Order Status : <span class="badge">@Model.Status</span></h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Unit Total</th>
+    </tr>
+    @foreach (var item in Model.OrderDetails)
+    {
+        <tr>
+            <td>@item.Product.Name</td>
+            <td>@item.Qty</td>
+            <td>@item.Price</td>
+            <td>@(item.Qty * item.Price)</td>
+        </tr>
+    }
+    <tr>
+        <th colspan="3" class="text-right">Total</th>
+        <th >@Model.Amount</th>
+    </tr>
+</table>
+<a href="/Order/Process/@Model.Id" class="btn btn-danger">Process</a>
+<a href="/Order/Decline/@Model.Id" class="btn btn-danger">Decline</a>

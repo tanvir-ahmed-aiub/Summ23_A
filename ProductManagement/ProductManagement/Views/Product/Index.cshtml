@@ -5,6 +5,9 @@
 }
 
 <h2>Index</h2>
+@if (TempData["Msg"] != null) { 
+    <p class="alert alert-info">@TempData["Msg"]</p>
+}
 <a href="/Product/Create" class="btn btn-success">Create</a>
 
 <table class="table table-condensed">
@@ -23,8 +26,9 @@
             <td>@item.Price</td>
             <td>@item.Qty</td>
             <td>@item.Description</td>
-            <th><a href="/Product/Edit/@item.Id" class="btn btn-warning">Edit</a></th>
-            <th><a href="/Product/Delete/@item.Id" class="btn btn-danger">Delete</a></th>
+            <td><a href="/Product/Add/@item.Id" class="btn btn-success">Add to Cart</td>
+            @*<th><a href="/Product/Edit/@item.Id" class="btn btn-warning">Edit</a></th>
+            <th><a href="/Product/Delete/@item.Id" class="btn btn-danger">Delete</a></th>*@
         </tr>
     }
 </table>

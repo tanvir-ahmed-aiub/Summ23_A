@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="DemoSumm23_AModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoSumm23_AModel.Product" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoSumm23_AModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoSumm23_AModel.OrderDetail" Width="1.5" PointX="5" PointY="0.75" />
+        <EntityTypeShape EntityType="DemoSumm23_AModel.Order" Width="1.5" PointX="2.75" PointY="7" />
+        <AssociationConnector Association="DemoSumm23_AModel.FK_OrderDetails_Orders" />
+        <AssociationConnector Association="DemoSumm23_AModel.FK_OrderDetails_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

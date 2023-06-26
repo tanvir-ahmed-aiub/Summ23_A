@@ -42,6 +42,57 @@ namespace ProductManagement.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult Add(int id) {
+            DemoSumm23_AEntities db = new DemoSumm23_AEntities();
+            var p = db.Products.Find(id);
+            var product = Convert(p);
+            product.Qty = 1;
+            List<ProductDTO> cart = null;
+            if (Session["cart"] != null)
+            {
+                cart =(List<ProductDTO>) Session["cart"]; //unboxing
+            }
+            else { 
+                cart = new List<ProductDTO>();
+            }
+            cart.Add(product);
+            Session["cart"] = cart; //
+            TempData["Msg"] = "Product Added Successfully";
+            return RedirectToAction("Index");
+        }
+        public ActionResult Cart() {
+            var cart = (List<ProductDTO>)Session["cart"];
+            if (cart != null) {
+                return View(cart);
+            }
+            TempData["Msg"] = "Cart is Empty";
+            return RedirectToAction("Index");
+        }
+        public ActionResult Checkout() {
+            var db = new DemoSumm23_AEntities();
+            var order = new Order();
+            order.Date = DateTime.Now;
+            order.Status = "Ordered";
+            db.Orders.Add(order);
+            
+            var cart = (List<ProductDTO>)Session["cart"];
+            var total = 0;
+            foreach (var p in cart) {
+                var od = new OrderDetail();
+                od.OId = order.Id;
+                od.PId = p.Id;
+                od.Qty = p.Qty;
+                od.Price = p.Price;
+                total += p.Price * p.Qty;
+                db.OrderDetails.Add(od);
+            }
+            order.Amount = total;
+            
+            db.SaveChanges();
+            Session["cart"] = null;
+            TempData["Msg"] = "Order Placed Successfully with Order Id " + order.Id;
+            return RedirectToAction("Index");
+        }
         ProductDTO Convert(Product p) {
             var pr = new ProductDTO() {
                 Id = p.Id,

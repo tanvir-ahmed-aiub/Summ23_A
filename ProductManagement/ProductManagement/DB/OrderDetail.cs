@@ -12,14 +12,15 @@ namespace ProductManagement.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class OrderDetail
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public string Profession { get; set; }
-        public string Gender { get; set; }
-        public string Password { get; set; }
-        public string Type { get; set; }
+        public int PId { get; set; }
+        public int Price { get; set; }
+        public int Qty { get; set; }
+        public int OId { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
