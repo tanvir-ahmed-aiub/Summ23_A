@@ -1,5 +1,6 @@
 ﻿using DAL.EF;
 using DAL.EF.Models;
+using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +9,32 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    public class NewsRepo
+    internal class NewsRepo : Repo, IRepo<News, int, bool>
     {
-        public static List<News> Get()
+        public bool Create(News obj)
         {
-            var db = new NewsContext();
+            db.News.Add(obj);
+            return db.SaveChanges() > 0;
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<News> Get()
+        {
             return db.News.ToList();
         }
-        public static News Get(int id)
-        {
-            var db = new NewsContext();
-            return db.News.Find(id);
 
+        public News Get(int id)
+        {
+            return db.News.Find(id);
+        }
+
+        public bool Update(News obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

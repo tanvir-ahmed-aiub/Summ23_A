@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
+using DAL;
 using DAL.EF.Models;
 using DAL.Repos;
 using System;
@@ -13,7 +14,7 @@ namespace BLL.Services
     public class NewsService
     {
         public static List<NewsDTO> Get() {
-            var data = NewsRepo.Get();
+            var data = DataAccessFactory.NewsDataAccess().Get();
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<News, NewsDTO>();
             });
@@ -22,7 +23,7 @@ namespace BLL.Services
             return cnvrt;
         }
         public static NewsDTO Get(int id) {
-            var data = NewsRepo.Get(id);
+            var data = DataAccessFactory.NewsDataAccess().Get(id);
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<News, NewsDTO>();
             });
@@ -31,7 +32,7 @@ namespace BLL.Services
             return cnvrt;
         }
         public static List<NewsDTO> Get(DateTime date) {
-            var data = (from n in NewsRepo.Get()
+            var data = (from n in DataAccessFactory.NewsDataAccess().Get()
                         where n.Date == date
                         select n).ToList();
             var config = new MapperConfiguration(cfg => {
@@ -42,7 +43,7 @@ namespace BLL.Services
             return cnvrt;
         }
         public static NewsCategoryDTO GetWithCat(int id) {
-            var data = NewsRepo.Get(id);
+            var data = DataAccessFactory.NewsDataAccess().Get(id);
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<News, NewsCategoryDTO>();
                 cfg.CreateMap<Category, CategoryDTO>();
@@ -52,7 +53,7 @@ namespace BLL.Services
             return cnvrt;
         }
         public static List<NewsDTO> GetByCatName(string name) {
-            var data = (from n in NewsRepo.Get()
+            var data = (from n in DataAccessFactory.NewsDataAccess().Get()
                        where n.Category.Name.ToLower().Contains(name.ToLower())
                        select n).ToList();
             var config = new MapperConfiguration(cfg => {
@@ -63,7 +64,7 @@ namespace BLL.Services
             return cnvrt;
         }
         public static List<NewsDTO> GetByCatDate(string cat, DateTime date) {
-            var data = (from n in NewsRepo.Get()
+            var data = (from n in DataAccessFactory.NewsDataAccess().Get()
                         where n.Category.Name.ToLower().Contains(cat.ToLower())
                         && n.Date == date
                         select n).ToList();
