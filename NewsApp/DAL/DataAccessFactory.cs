@@ -12,10 +12,20 @@ namespace DAL
     public class DataAccessFactory
     {
         public static IRepo<News,int,bool> NewsDataAccess() {
-            return new NewsRepoV2();
+            return new NewsRepo();
         }
         public static IRepo<Category, int, bool> CategoryDataAccess() {
             return new CategoryRepo();
+        }
+        public static IRepo<User, string, bool> UserDataAccess() {
+            return new UserRepo();
+        }
+        public static IRepo<Token, int, Token> TokenDataAccess() {
+            return new TokenRepo();
+        }
+        public static IAuth AuthDataAccess()
+        {
+            return new UserRepo();
         }
     }
 }

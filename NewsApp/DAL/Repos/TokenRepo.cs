@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class NewsRepoV2 : Repo, IRepo<News, int, bool>
+    internal class TokenRepo : Repo, IRepo<Token, int, Token>
     {
-        public bool Create(News obj)
+        public Token Create(Token obj)
         {
-            throw new NotImplementedException();
+            db.Tokens.Add(obj);
+            db.SaveChanges();
+            return obj;
         }
 
         public bool Delete(int id)
@@ -20,17 +22,18 @@ namespace DAL.Repos
             throw new NotImplementedException();
         }
 
-        public List<News> Get()
+        public List<Token> Get()
         {
             throw new NotImplementedException();
         }
 
-        public News Get(int id)
+        public Token Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Tokens.Find(id);
+            
         }
 
-        public bool Update(News obj)
+        public Token Update(Token obj)
         {
             throw new NotImplementedException();
         }

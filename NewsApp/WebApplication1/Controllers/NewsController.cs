@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApplication1.AuthFilters;
 
 namespace WebApplication1.Controllers
 {
@@ -25,6 +26,7 @@ namespace WebApplication1.Controllers
             }
 
         }
+        [Logged]
         [HttpGet]
         [Route("api/news/get/{id}")]
         public HttpResponseMessage Get(int id)
@@ -39,7 +41,7 @@ namespace WebApplication1.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
+     
         [HttpGet]
         [Route("api/news/date/{date}")]
         public HttpResponseMessage GetByDate(DateTime date) {
