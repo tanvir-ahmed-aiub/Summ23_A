@@ -5,10 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebApplication1.AuthFilters;
 
 namespace WebApplication1.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class NewsController : ApiController
     {
         [HttpGet]
@@ -26,7 +28,8 @@ namespace WebApplication1.Controllers
             }
 
         }
-        [Logged]
+        //[Admin]
+      
         [HttpGet]
         [Route("api/news/get/{id}")]
         public HttpResponseMessage Get(int id)

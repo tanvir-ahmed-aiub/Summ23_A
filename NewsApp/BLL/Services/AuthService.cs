@@ -31,5 +31,23 @@ namespace BLL.Services
             }
             return null;
         }
+        public static bool IsTokenValid(string token) {
+            var tk = (from t in DataAccessFactory.TokenDataAccess().Get()
+                     where t.TokenKey.Equals(token)
+                     && t.ExpiredAt == null
+                     select t).SingleOrDefault();
+            if (tk != null) {
+                return true;
+            }
+            return false;
+        }
+        public static bool IsAdmin(string token) {
+            var tk = (from t in DataAccessFactory.TokenDataAccess().Get()
+                      where t.TokenKey.Equals(token)
+                      && t.ExpiredAt == null
+                      && t.User.Username.Equals("tanvir")
+                      select t).SingleOrDefault();
+            return tk != null;
+        }
     }
 }

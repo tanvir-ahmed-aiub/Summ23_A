@@ -19,6 +19,7 @@ namespace WebApplication1
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.EnableCors();
         }
     }
 }
