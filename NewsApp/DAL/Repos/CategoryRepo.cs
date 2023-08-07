@@ -13,27 +13,32 @@ namespace DAL.Repos
     {
         public bool Create(Category obj)
         {
-            throw new NotImplementedException();
+            db.Categories.Add(obj);
+            return db.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var ex = Get(id);
+            db.Categories.Remove(ex);
+            return db.SaveChanges() > 0;
         }
 
         public List<Category> Get()
         {
-            throw new NotImplementedException();
+            return db.Categories.ToList();
         }
 
         public Category Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Categories.Find(id);
         }
 
         public bool Update(Category obj)
         {
-            throw new NotImplementedException();
+            var ex = Get(obj.Id);
+            db.Entry(ex).CurrentValues.SetValues(obj);
+            return db.SaveChanges() > 0;
         }
     }
 }

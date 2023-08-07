@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script>
+			var app = angular.module("my-app",[]);
+			
+			/*app.controller("controller-name",function($scope){
+			
+			});*/
+			
+			app.controller("my-ctrl",function($scope){
+				$scope.name = "Tanvir Ahmed";
+			});
+			
+			app.controller("news-ctrl",function($scope,$http){
+				
+				$http.get("https://localhost:44399/api/news/get/1").then(function(resp){
+					$scope.obj = resp.data;
+				},function(err){});
+				
+			});
+			
+		</script>
+	</head>
+	<body ng-app="my-app">
+		<div></div>
+		<div >
+			<input type="text" ng-model="name">
+			<h2>My name is {{name}}</h2>
+			<h2>My name is <span ng-bind="name"></span></h2>
+			<p>The sum of 5 & 6 is {{5+6}}</p>
+		</div>
+		
+		<div ng-controller="my-ctrl">
+			<input type="text" ng-model="myName">
+			<p>Variable from controller {{name}}</p>
+		</div>
+		
+		<div ng-controller="news-ctrl">
+			<h1>{{obj.Title}}</h1>
+			<h1>{{obj.Date}}</h1>
+		</div>
+		
+		<div>
+			<p>The sum of 5 & 6 is {{5+6}}</p>
+		</div>
+	</body>
+</html>
