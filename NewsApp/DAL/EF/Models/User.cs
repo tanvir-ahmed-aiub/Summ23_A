@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EF.Models
 {
-    public class User
+    public class User 
     {
         [Key]
         public string Username { get; set; }

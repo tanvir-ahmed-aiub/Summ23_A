@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EF.Models
 {
-    public class Category
+    public class Category 
     {
         public int Id { get; set; }
         [Required]

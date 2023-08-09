@@ -54,6 +54,7 @@
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\Models\Category.cs" />
     <Compile Include="EF\Models\News.cs" />
+    <Compile Include="EF\Models\Proto.cs" />
     <Compile Include="EF\Models\Token.cs" />
     <Compile Include="EF\Models\User.cs" />
     <Compile Include="EF\NewsContext.cs" />
